@@ -8,10 +8,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "My Awesome Blog",
-    template: "%s - My Awesome Blog",
+    default: "Veluwedigital",
+    template: "%s - Veluwedigital",
   },
-  description: "Come and read my awesome articles!",
+  description: "Come and view my websites!",
   twitter: {
     card: "summary_large_image",
   },
