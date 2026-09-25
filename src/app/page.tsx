@@ -1,5 +1,4 @@
 import Badge from "@/components/Badge";
-import Cases from "@/components/Cases";
 import PricingCard from "@/components/PricingCard";
 import { Metadata } from "next";
 import Link from "next/link";
