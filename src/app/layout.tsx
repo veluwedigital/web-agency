@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import Background from "@/assets/Background.png";
+import Background from "@/assets/background.png";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Image from "next/image";
