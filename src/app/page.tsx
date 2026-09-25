@@ -1,8 +1,14 @@
 import Badge from "@/components/Badge";
+import Cases from "@/components/Cases";
 import PricingCard from "@/components/PricingCard";
-import { delay } from "@/lib/utils";
-import { BlogPostsResponse } from "@/models/BlogPost";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Betaalbare websites voor lokale ondernemers",
+  description:
+    "VeluweDigital bouwt professionele websites voor kleine lokale ondernemers — snel, betaalbaar en zonder gedoe. Online binnen 5 dagen.",
+};
 
 const features = [
   {
@@ -45,23 +51,34 @@ const features = [
   },
 ];
 
-export default async function BlogPage() {
-  const response = await fetch("https://dummyjson.com/posts");
-  const { posts }: BlogPostsResponse = await response.json();
-
-  await delay(1000);
-
+export default function HomePage() {
   return (
     <div className="max-w-prose lg:max-w-6xl m-auto py-4 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "VeluweDigital",
+            description:
+              "Wij bouwen professionele websites voor kleine lokale ondernemers — snel, betaalbaar en zonder gedoe.",
+            url: process.env.NEXT_PUBLIC_BASE_URL,
+            priceRange: "€€",
+            areaServed: "NL",
+          }),
+        }}
+      />
+
       <div className="flex flex-col lg:flex-row lg:items-center gap-10">
         {/* Linkerkolom: hero content */}
         <div className="flex-1 space-y-2">
-          <Badge />
+          <Badge text={"Webdevelopment voor lokale bedrijven"} />
           <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold">
-            Betaalbaar online <br /> zichtbaar.
-          </h1>
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 to-blue-700 bg-clip-text text-transparent">
-            Zonder gedoe.
+            Betaalbaar online <br /> zichtbaar. <br />
+            <span className="bg-gradient-to-r from-blue-400 to-blue-700 bg-clip-text text-transparent">
+              Zonder gedoe.
+            </span>
           </h1>
 
           <p className="text-base leading-relaxed max-w-md mb-10 text-white/50">
@@ -73,7 +90,7 @@ export default async function BlogPage() {
           {/* Buttons */}
           <div className="flex flex-wrap gap-3 mb-10">
             <Link
-              href="/projecten"
+              href="/posts"
               className="inline-flex items-center gap-2 rounded-full bg-blue-500 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-600"
             >
               Bekijk projecten
@@ -83,7 +100,7 @@ export default async function BlogPage() {
             </Link>
 
             <Link
-              href="/werkwijze"
+              href="/about"
               className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -136,6 +153,8 @@ export default async function BlogPage() {
           <PricingCard />
         </div>
       </div>
+
+      {/* <Cases /> */}
     </div>
   );
 }

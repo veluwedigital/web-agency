@@ -19,10 +19,8 @@ export default function Header() {
 
         {/* MID-section */}
         <nav className="hidden sm:flex gap-6 text-white">
-          <p>Projecten</p>
-          <p>Prijzen</p>
-          <p>Informatie</p>
-          <p>FAQ</p>
+          <Link href='/posts'>Projecten</Link>
+          <Link href='/about'>Over ons</Link>
         </nav>
       </div>
 

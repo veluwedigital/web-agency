@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="nl">
       <body className={inter.className}>
         <div className="fixed inset-0 -z-10">
           <Image

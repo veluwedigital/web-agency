@@ -1,88 +1,78 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title: "Privacybeleid",
   robots: {
     index: false,
     follow: true,
   },
 };
 
+const sections = [
+  {
+    title: "Welke gegevens we verzamelen",
+    content:
+      "Wanneer je het contactformulier invult, verzamelen we je naam, e-mailadres en het bericht dat je stuurt. Bezoek je de site, dan kunnen we daarnaast basale analytics-gegevens verzamelen, zoals welke pagina's je bezoekt en via welk apparaat.",
+  },
+  {
+    title: "Waarom we deze gegevens verzamelen",
+    content:
+      "We gebruiken je gegevens uitsluitend om te reageren op je aanvraag en, indien van toepassing, een offerte op te stellen. We gebruiken je gegevens niet voor marketingdoeleinden zonder je expliciete toestemming.",
+  },
+  {
+    title: "Delen met derden",
+    content:
+      "We verkopen of verhuren je gegevens nooit aan derden. We kunnen gebruikmaken van externe dienstverleners (zoals hostingpartijen) die toegang hebben tot gegevens voor zover noodzakelijk om onze diensten te leveren.",
+  },
+  {
+    title: "Cookies",
+    content:
+      "Deze site kan functionele en analytische cookies gebruiken om de website goed te laten werken en te begrijpen hoe bezoekers de site gebruiken. Je kunt cookies uitschakelen via je browserinstellingen.",
+  },
+  {
+    title: "Beveiliging",
+    content:
+      "We nemen passende technische en organisatorische maatregelen om je gegevens te beschermen tegen verlies of onrechtmatig gebruik.",
+  },
+  {
+    title: "Jouw rechten",
+    content:
+      "Je hebt het recht om je gegevens in te zien, te corrigeren of te laten verwijderen. Neem hiervoor contact met ons op via het contactformulier.",
+  },
+  {
+    title: "Wijzigingen",
+    content:
+      "We kunnen dit privacybeleid van tijd tot tijd aanpassen. De meest actuele versie staat altijd op deze pagina.",
+  },
+];
+
 export default function PrivacyPolicy() {
   return (
-    <div className="max-w-prose m-auto space-y-3">
-      <h1 className="text-3xl text-center font-bold">Privacy Policy</h1>
-      <p>
-        Welcome to our Privacy Policy, where we navigate the treacherous waters
-        of legal jargon to tell you what we&apos;re doing with your data.
-        Here&apos;s the lowdown, in plain-ish English:
-      </p>
-      <ol className="space-y-3">
-        <li>
-          <h2 className="font-bold text-lg">
-            Your Info is Gold... but Not to Us
-          </h2>
-          <p>
-            We collect some of your info (name, email, favorite ice cream
-            flavor) because, well, that&apos;s what websites do. But fear not,
-            we guard it like a dragon hoards gold. Minus the fire-breathing.
-          </p>
-        </li>
-        <li>
-          <h2 className="font-bold text-lg">
-            Sharing is Caring... but Not with Everyone
-          </h2>
-          <p>
-            We might share your info with partners or service providers. Rest
-            assured, we only let them peek through the window; they can&apos;t
-            crash on the couch.
-          </p>
-        </li>
-        <li>
-          <h2 className="font-bold text-lg">Cookies: Not the Tasty Kind</h2>
-          <p>
-            Yes, we use cookies. No, they won&apos;t satisfy your sweet tooth.
-            They just help us track what you&apos;re up to on our site.
-            It&apos;s like having a friendly but slightly nosy neighbor.
-          </p>
-        </li>
-        <li>
-          <h2 className="font-bold text-lg">
-            Your Security is Our Top Priority... Most of the Time
-          </h2>
-          <p>
-            We&apos;ve set up Fort Knox-level security measures. Well, almost.
-            Picture more like a trusty padlock than a laser grid.
-          </p>
-        </li>
-        <li>
-          <h2 className="font-bold text-lg">Third-Party Shenanigans</h2>
-          <p>
-            Sometimes, our site may have links to other places. We&apos;re not
-            responsible for their shenanigans. Click wisely, young padawan.
-          </p>
-        </li>
-        <li>
-          <h2 className="font-bold text-lg">Changes? Oh, Yes, We Change</h2>
-          <p>
-            We might tweak this policy occasionally. But don&apos;t worry,
-            we&apos;ll send a carrier pigeon to let you know (or maybe just an
-            email).
-          </p>
-        </li>
-        <li>
-          <h2 className="font-bold text-lg">You&apos;re in Control... Kinda</h2>
-          <p>
-            You can ask us to delete your info. Just don&apos;t expect us to
-            erase it like it&apos;s a dusty whiteboard; there might be some
-            digital remnants.
-          </p>
-        </li>
-      </ol>
-      <p>
-        By using our site, you agree to these terms. If you don&apos;t, well,
-        there&apos;s always the offline world, where the privacy policy is
-        simply called &quot;common sense.&quot;
+    <div className="max-w-3xl mx-auto py-16 px-5 text-white">
+      <div className="mb-10 text-center">
+        <h1 className="text-3xl sm:text-4xl font-bold">Privacybeleid</h1>
+        <p className="mt-3 text-white/50">
+          Laatst bijgewerkt: {new Date().toLocaleDateString("nl-NL", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })}
+        </p>
+      </div>
+
+      <div className="space-y-8">
+        {sections.map(({ title, content }) => (
+          <div key={title}>
+            <h2 className="text-lg font-semibold mb-2">{title}</h2>
+            <p className="text-white/60 leading-relaxed">{content}</p>
+          </div>
+        ))}
+      </div>
+
+      <p className="mt-10 pt-8 border-t border-white/10 text-sm text-white/40">
+        Door gebruik te maken van deze website ga je akkoord met dit
+        privacybeleid. Vragen over hoe we met je gegevens omgaan? Neem gerust
+        contact met ons op.
       </p>
     </div>
   );
