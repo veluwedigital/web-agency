@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "VeluweDigital bouwt professionele websites voor kleine lokale ondernemers — snel, betaalbaar en zonder gedoe. Online binnen 5 dagen.",
 };
-
+// Hello world
 const features = [
   {
     title: "Snel online",
