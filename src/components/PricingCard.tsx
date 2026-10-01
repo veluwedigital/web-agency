@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const checks = [
   "1-3 pagina's volledig op maat",
   "Volledig mobiel geoptimaliseerd",
@@ -46,13 +48,22 @@ export default function PricingCard() {
           </li>
         ))}
       </ul>
-
-      <button className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-blue-500 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-600">
-        Vraag gratis offerte aan
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-          <path d="M5 12h14M13 6l6 6-6 6" />
-        </svg>
-      </button>
+<Link
+  href="/contact"
+  className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-blue-500 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+>
+  Vraag gratis offerte aan
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    className="h-4 w-4"
+    aria-hidden="true"
+  >
+    <path d="M5 12h14M13 6l6 6-6 6" />
+  </svg>
+</Link>
 
       <p className="mt-3 text-center text-xs text-white/40">
         Geen abonnement, je behoudt alles
