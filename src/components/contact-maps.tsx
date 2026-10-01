@@ -1,11 +1,13 @@
 "use client"
 
 import React, { useState } from 'react'
+import type { ReactNode, FormEvent } from 'react'
 
-// Vervang JOUW_ID door het ID van je Formspree-formulier (https://formspree.io)
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xyezazob'
 
-function Icon({ children, size = 18 }) {
+type Status = 'idle' | 'sending' | 'success' | 'error'
+
+function Icon({ children, size = 18 }: { children: ReactNode; size?: number }) {
   return (
     <svg
       width={size}
@@ -23,7 +25,7 @@ function Icon({ children, size = 18 }) {
   )
 }
 
-const MailIcon = ({ size }) => (
+const MailIcon = ({ size }: { size?: number }) => (
   <Icon size={size}>
     <rect x="2" y="4" width="20" height="16" rx="2" />
     <path d="m22 7-10 6L2 7" />
@@ -71,7 +73,15 @@ const contactItems = [
   { icon: ClockIcon, label: 'Reactietijd', value: 'Binnen 1 werkdag' },
 ]
 
-function Field({ label, required, children }) {
+function Field({
+  label,
+  required,
+  children,
+}: {
+  label: string
+  required?: boolean
+  children: ReactNode
+}) {
   return (
     <label className="flex flex-col gap-1.5 text-sm font-medium text-slate-200">
       <span>
@@ -87,10 +97,9 @@ const inputClass =
   'w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-normal text-white placeholder:text-slate-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40'
 
 export default function ContactBlock() {
-  // idle | sending | success | error
-  const [status, setStatus] = useState('idle')
+  const [status, setStatus] = useState<Status>('idle')
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = e.currentTarget
     const data = Object.fromEntries(new FormData(form))
@@ -124,7 +133,7 @@ export default function ContactBlock() {
   }
 
   return (
-    <section className="w-full  px-6 py-20 text-white">
+    <section className="w-full px-6 py-20 text-white">
       <div className="mx-auto grid w-full max-w-6xl items-start gap-12 lg:grid-cols-2">
         {/* Links: tekst en contactgegevens */}
         <div className="flex flex-col gap-8">
